@@ -5,11 +5,8 @@ def load_data( file_name ):
     with open(file_name,'r') as user_data:
         for line in user_data:
             item = (line[:-1]).split('\t')
-            for i in item:
+            for idx, i in enumerate(item):
                 if '/' in i:
-                    # print i.split('/')
-                    i = 0#i.split('/')
-                    print i
+                    item[idx] = i.split('/')
             result.append(item)
-        print result
     return result
