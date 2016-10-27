@@ -9,9 +9,9 @@ VALIDATION_DATA_ADDR = './bytecup2016data/validate_nolabel.txt'
 
 if __name__ == '__main__':
     print "Reading data..."
-    user_data = load_data(USER_DATA_ADDR)
-    question_data = load_data(QUESTION_DATA_ADDR)
-    # invitation_data = load_data(INVITED_DATA_ADDR)
+    user_data,user_id = load_data(USER_DATA_ADDR)
+    question_data,question_id = load_data(QUESTION_DATA_ADDR)
     # vectorize_user(user_data)
+    print user_data
 
     
