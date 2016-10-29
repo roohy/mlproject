@@ -13,3 +13,11 @@ def load_data( file_name ):
             result.append(item[1:])
             result_id.append(item[0])
     return result,result_id
+
+def invited_info_loader(file_name):
+    result = []
+    with open(file_name,'r') as file:
+        for line in file:
+            item = (line[:-1]).split('\t')
+            result.append(item)
+    return result

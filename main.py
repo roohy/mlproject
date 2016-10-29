@@ -11,7 +11,9 @@ if __name__ == '__main__':
     print "Reading data..."
     user_data,user_id = load_data(USER_DATA_ADDR)
     question_data,question_id = load_data(QUESTION_DATA_ADDR)
-    # vectorize_user(user_data)
-    print user_data
+    train_data = invited_info_loader(INVITED_DATA_ADDR)
+
+    # vectorize(user_data,question_data)
+    # print user_data
 
     
