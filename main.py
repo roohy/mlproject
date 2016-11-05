@@ -1,6 +1,7 @@
 import numpy as np
 from file_readers import *
 import parsers
+import collab
 USER_DATA_ADDR = "./bytecup2016data/user_info.txt"
 QUESTION_DATA_ADDR = "./bytecup2016data/question_info.txt"
 INVITED_DATA_ADDR = './bytecup2016data/invited_info_train.txt'
@@ -18,4 +19,5 @@ if __name__ == '__main__':
 
     vectorized_train_data = parsers.user_question(user_id,question_id,train_data)
     trainMat = parsers.user_question_matrix(user_id,question_id,vectorized_train_data)
+    collab.show_similarity_pearson(trainMat)
 

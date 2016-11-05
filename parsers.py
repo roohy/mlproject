@@ -51,6 +51,7 @@ def user_question_matrix(user_ids,question_ids, vectorized_train_data):
     result_mat = np.zeros((len(user_ids),len(question_ids)))
     for item in vectorized_train_data:
         result_mat[item[0],item[1]] = item[2]
+    return result_mat
 
 
 def user_vectorize(user_data,question_data,tag_dic,word_dic, dim,tag_count):
