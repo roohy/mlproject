@@ -3,13 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import decomposition
 
-def main_plot_pca(data):
+
+
+def main_plot_pca(data,n_comps):
     print "training the PCA model"
-    pca = decomposition.IncrementalPCA(n_components=30,batch_size=400)
+    pca = decomposition.IncrementalPCA(n_components=n_comps,batch_size=400)
     data_trans = pca.fit_transform(data)
     print "pca model trained, variance:"
     print(pca.explained_variance_ratio_)
-    return pca, data
+    return pca, data_trans
     '''plt.figure(1, figsize=(4, 3))
     plt.clf()
     plt.axes([.2, .2, .7, .7])

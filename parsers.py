@@ -1,7 +1,7 @@
 
 import numpy as np
 
-vector_feature_count = 3
+vector_feature_count = 3 #base_length is the lenght of question vecotr (standard) without is feature counts (three first elements)
 def dictionary_generator(data_list):
     tag_dic = {}
     word_dic = {}
@@ -22,8 +22,10 @@ def dictionary_generator(data_list):
             if item not in letter_dic:
                 letter_dic[item] = letter_counter
                 letter_counter += 1
-    #print tag_counter,word_counter,letter_counter
+    print tag_counter,word_counter,letter_counter
+
     return tag_dic,tag_counter,word_dic,word_counter,letter_dic,letter_counter
+
 
 def document_vectorize(question_data, tag_dic,word_dic, dim,tag_count):
     result = []
@@ -39,8 +41,13 @@ def document_vectorize(question_data, tag_dic,word_dic, dim,tag_count):
         for i in range(0,base_length):
             temp_vec[i] = question[vector_feature_count+i]
         result.append(temp_vec)
+    #return np.array(result)[:,:3+tag_count]
     return np.array(result)
-
+def user_question_test(user_ids,question_ids,test_list):
+    result = []
+    for item in test_list:
+        result.append([user_ids.index(item[1]), question_ids.index(item[0])])
+    return result
 def user_question(user_ids,question_ids, train_data):
     result = []
     for item in train_data:
@@ -58,14 +65,15 @@ def user_vectorize(user_data,question_data,tag_dic,word_dic, dim,tag_count):
     result = []
     base_length = len(question_data[0]) - vector_feature_count
     for user in user_data:
-        temp_vec = np.zeros(dim)
+        temp_vec = np.zeros(dim-base_length)
         for item in user[0]:
             if item in tag_dic:
-                temp_vec[base_length + tag_dic[item]] += 1
+                temp_vec[ tag_dic[item]] += 1
         for item in user[1]:
             if item in word_dic:
-                temp_vec[base_length + tag_count + word_dic[item]] += 1
+                temp_vec[tag_count + word_dic[item]] += 1
         result.append(temp_vec)
+    #return np.array(result)[:,:tag_count]
     return np.array(result)
 
 

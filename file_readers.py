@@ -21,3 +21,20 @@ def invited_info_loader(file_name):
             item = (line[:-1]).split('\t')
             result.append(item)
     return result
+
+def test_loader(file_name):
+    result = []
+    with open(file_name,'r') as file:
+        header = file.readline()
+        for line in file:
+            item = (line[:-2]).split(',')
+            print item
+            result.append(item)
+    return result
+
+
+def logistic_writer(labels, data):
+    with open("logistic_result", 'w') as f:
+        f.write("qid,uid,label\n")
+        for i in range(data.shape[0]):
+            f.write(labels[i][0]+','+labels[i][1]+','+str(data[i])+'\n')
