@@ -35,7 +35,8 @@ if __name__ == '__main__':
     #logistic_result = logistic_regression.logistic_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
     #logistic_writer(test_data,logistic_result)
 
-    deepResult = deep.deep_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
+    # deepResult = deep.deep_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
+    deepResult = deep.sigmoid_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
     logistic_writer(test_data,deepResult)
     #np.savetxt('user',user_vector,delimiter=',',fmt='%d',newline='\n')
     #np.savetxt('question',question_vector,delimiter=',',fmt='%d',newline='\n')

@@ -5,25 +5,43 @@ vector_feature_count = 3 #base_length is the lenght of question vecotr (standard
 def dictionary_generator(data_list):
     tag_dic = {}
     word_dic = {}
+    list_ll = []
     letter_dic = {}
     tag_counter = 0
     word_counter = 0 
     letter_counter = 0
     for items in data_list:
-        for item in items[0]:
-            if item not in tag_dic: 
-                tag_dic[item] = tag_counter
-                tag_counter+= 1
-        for item in items[1]:
+        if type(items[0]) == str:
+            if items[0] not in tag_dic:
+                tag_dic[items[0]] = tag_counter
+                tag_counter+=1
+        else:
+            for item in items[0]:
+                list_ll.append(item)
+                if item not in tag_dic:
+                    tag_dic[item] = tag_counter
+                    tag_counter+= 1
+
+        if type(items[1]) == str:
             if item not in word_dic:
-                word_dic[item] = word_counter
+                word_dic[items[1]] = word_counter
                 word_counter += 1
+        else:
+
+            for item in items[1]:
+                if item not in word_dic:
+                    word_dic[item] = word_counter
+                    word_counter += 1
         for item in items[2]:
             if item not in letter_dic:
                 letter_dic[item] = letter_counter
                 letter_counter += 1
     print tag_counter,word_counter,letter_counter
-
+    print "------"
+    list_ll=(list(set(list_ll)))
+    list_ll = [int(item) for item in list_ll]
+    list_ll.sort()
+    print list_ll
     return tag_dic,tag_counter,word_dic,word_counter,letter_dic,letter_counter
 
 

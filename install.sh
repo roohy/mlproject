@@ -8,3 +8,6 @@ sudo pip install Theano
 sudo pip install matplotlib
 sudo pip install keras
 sudo pip install sklearn
+sudo apt-get install python-numpy-dev python-setuptools python-scipy libatlas-dev g++
+pip install -U scikits.learn
+pip install -U crab
