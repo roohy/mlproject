@@ -2,9 +2,11 @@ import numpy as np
 from file_readers import *
 import parsers
 import logistic_regression
-import deep
+#import deep
 import PCA
 import collab
+import crab
+import gl
 USER_DATA_ADDR = "./bytecup2016data/user_info.txt"
 QUESTION_DATA_ADDR = "./bytecup2016data/question_info.txt"
 INVITED_DATA_ADDR = './bytecup2016data/invited_info_train.txt'
@@ -29,15 +31,21 @@ if __name__ == '__main__':
     vectorized_train_data = parsers.user_question(user_id,question_id,train_data)
     vectorized_test_data = parsers.user_question_test(user_id,question_id,test_data)
 
-    del question_id,user_id,train_data
+
     # PCA.main_plot_pca(user_vector)
 
     #logistic_result = logistic_regression.logistic_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
     #logistic_writer(test_data,logistic_result)
 
     # deepResult = deep.deep_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
-    deepResult = deep.sigmoid_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
-    logistic_writer(test_data,deepResult)
+    #deepResult = deep.sigmoid_main(user_vector,question_vector,vectorized_train_data,vectorized_test_data)
+    #logistic_writer(test_data,deepResult)
+
+
+    crab_res = crab.crab_main(vectorized_train_data,vectorized_test_data)
+
+    logistic_writer(test_data,crab_res)
+
     #np.savetxt('user',user_vector,delimiter=',',fmt='%d',newline='\n')
     #np.savetxt('question',question_vector,delimiter=',',fmt='%d',newline='\n')
     #np.savetxt('train',vectorized_train_data,delimiter=',',fmt='%d',newline='\n')
@@ -46,3 +54,6 @@ if __name__ == '__main__':
     #trainMat = parsers.user_question_matrix(user_id,question_id,vectorized_train_data)
     #ollab.show_similarity_pearson(trainMat)
 
+
+    #glres = gl.glraw()
+    #logistic_writer(test_data, glres)

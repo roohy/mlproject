@@ -189,7 +189,7 @@ def sigmoid_main(user_data,question_data, train_data, test_data):
     # Compile Model
     sgd = SGD(lr=sgd_lr, decay=sgd_decay, momentum=sgd_mom,
               nesterov=sgd_Nesterov)
-    model.compile(loss='categorical_crossentropy', optimizer=sgd,
+    model.compile(loss='mean_squared_error', optimizer=sgd,
                   metrics=['accuracy'])
     num_epoch = 100
     batch_size = 1000

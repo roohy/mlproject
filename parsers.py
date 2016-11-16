@@ -78,6 +78,14 @@ def user_question_matrix(user_ids,question_ids, vectorized_train_data):
         result_mat[item[0],item[1]] = item[2]
     return result_mat
 
+def crab_costum_matrix( vectorized_train_data):
+    result_dic = {}
+    for item in vectorized_train_data:
+        if item[0] in result_dic:
+            result_dic[item[0]][item[1]] = item[2]
+        else:
+            result_dic[item[0]] = {item[1]:item[2]}
+    return result_dic
 
 def user_vectorize(user_data,question_data,tag_dic,word_dic, dim,tag_count):
     result = []
